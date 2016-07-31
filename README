@@ -1,0 +1,8 @@
+iTeaser 3
+=========
+
+To use emulator, include arduino.py from emulator/ (see emulator/example_joystick.py).
+
+Running emulator requires:
+* Python 2.7
+* PyGame
