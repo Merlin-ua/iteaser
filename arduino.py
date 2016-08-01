@@ -28,7 +28,8 @@ class Arduino(object):
         v2 = self.__getData()
         v3 = self.__getData()
         v4 = self.__getData()
-        return (int(v1), int(v2), int(v3), int(v4))
+        v5 = self.__getData()
+        return (int(v1), int(v2), int(v3), int(v4), int(v5))
 
     def __sendData(self, serial_data):
         while(self.__getData()[0] != "w"):

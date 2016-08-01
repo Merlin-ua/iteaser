@@ -16,7 +16,7 @@ def device(pipe):
     motor = 0
     motor_v = 0
     motor_speed = 320 / 5  # We want to move 320 pixels in 5 seconds.
-    hammers = [0, 0, 0, 0]
+    hammers = [0, 0, 0, 0, 0]
 
     receiving = False
     start = pygame.time.get_ticks()
@@ -81,6 +81,11 @@ def device(pipe):
           hammers[3] = 1
       else:
           hammers[3] = 0
+
+      if steps % 3 == 2:
+          hammers[4] = 1
+      else:
+          hammers[4] = 0
 
 class Arduino(object):
 
