@@ -2,8 +2,10 @@ import pygame
 import sys
 
 from arduino import Arduino
+from multiprocessing import freeze_support
 
 if __name__ == '__main__':
+  freeze_support()
   device = Arduino()
   pygame.init()
   pygame.display.set_mode((100, 100))
