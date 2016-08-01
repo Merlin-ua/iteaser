@@ -31,6 +31,11 @@ int servo5pin = 12;
 int servo5value = 0;
 int servo5start = 0;
 
+Servo servo6;
+int servo6pin = 3;
+int servo6value = 0;
+int servo6start = 0;
+
 int ledState = LOW;
 
 void setup() {
@@ -62,6 +67,11 @@ void setup() {
     servo5value = BUMP_NEUTRAL;
     servo5.write(servo5value);
     servo5start = t;
+
+    servo6.attach(servo6pin);
+    servo6value = BUMP_NEUTRAL;
+    servo6.write(servo6value);
+    servo6start = t;
     
     pinMode(13, OUTPUT);
     //digitalWrite(13, ledState);
@@ -110,6 +120,11 @@ void loop() {
         Serial.println(0);
       }
       if (servo5value == BUMP_ENGAGED) {
+        Serial.println(1);
+      } else {
+        Serial.println(0);
+      }
+      if (servo6value == BUMP_ENGAGED) {
         Serial.println(1);
       } else {
         Serial.println(0);
@@ -181,6 +196,18 @@ void updatePosition() {
     if (servo5value == BUMP_ENGAGED) {
       servo5value = BUMP_NEUTRAL;
       servo5.write(servo5value);
+    }
+  }
+
+  if (steps % 7 > 4) {
+    if (servo6value == BUMP_NEUTRAL) {
+      servo6value = BUMP_ENGAGED;
+      servo6.write(servo6value);
+    }
+  } else {
+    if (servo6value == BUMP_ENGAGED) {
+      servo6value = BUMP_NEUTRAL;
+      servo6.write(servo6value);
     }
   }
 }
