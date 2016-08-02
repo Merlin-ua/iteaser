@@ -106,7 +106,8 @@ void loop() {
       break;
     case 5:
       // Reads the servo positions.
-      if (servo2value == BUMP_ENGAGED) {
+
+      if (servo4value == BUMP_ENGAGED) {
         Serial.println(1);
       } else {
         Serial.println(0);
@@ -116,12 +117,12 @@ void loop() {
       } else {
         Serial.println(0);
       }
-      if (servo4value == BUMP_ENGAGED) {
+      if (servo5value == BUMP_ENGAGED) {
         Serial.println(1);
       } else {
         Serial.println(0);
       }
-      if (servo5value == BUMP_ENGAGED) {
+      if (servo2value == BUMP_ENGAGED) {
         Serial.println(1);
       } else {
         Serial.println(0);
