@@ -74,7 +74,6 @@ void setup() {
     servo6start = t;
     
     pinMode(13, OUTPUT);
-    //digitalWrite(13, ledState);
 }
 
 void loop() {
@@ -85,18 +84,21 @@ void loop() {
       servo1start = millis() - servo1start;
       servo1value += servo1start * servo1dir;
       servo1dir = 0;
+      digitalWrite(13, LOW);
       break;
     case 2:
       // Moves the main servo in one direction.
       servo1.write(MAIN_NEUTRAL - MAIN_SPEED);
       servo1start = millis();
       servo1dir = -1;
+      digitalWrite(13, HIGH);
       break;
     case 3:
       // Moves the main servo in the other direction.
       servo1.write(MAIN_NEUTRAL + MAIN_SPEED);
       servo1start = millis();
       servo1dir = 1;
+      digitalWrite(13, HIGH);
       break;
     case 4:
       // Reads the main servo position.
@@ -149,21 +151,19 @@ char readData() {
 
 void updatePosition() {
   int steps = (millis() - servo2start) / 1000;
-  if (steps % 6 == 5) {
+  if (steps % 7 == 5) {
     if (servo2value == BUMP_NEUTRAL) {
-      digitalWrite(13, HIGH);
       servo2value = BUMP_ENGAGED;
       servo2.write(servo2value);
     }
   } else {
     if (servo2value == BUMP_ENGAGED) {
-      digitalWrite(13, LOW);
       servo2value = BUMP_NEUTRAL;
-      servo2.write(servo2value);
+      servo2.write(servo2value);  
     }
   }
 
-  if (steps % 8 < 3) {
+  if (steps % 7 < 3) {
     if (servo3value == BUMP_NEUTRAL) {
       servo3value = BUMP_ENGAGED;
       servo3.write(servo3value);
@@ -175,7 +175,7 @@ void updatePosition() {
     }
   }
 
-  if (steps % 5 < 2) {
+  if (steps % 7 < 2) {
     if (servo4value == BUMP_NEUTRAL) {
       servo4value = BUMP_ENGAGED;
       servo4.write(servo4value);
