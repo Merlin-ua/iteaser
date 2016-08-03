@@ -113,8 +113,8 @@ class Arduino(object):
         v2 = self.__getData()
         v3 = self.__getData()
         v4 = self.__getData()
-        print v1, v2, v3, v4
-        return (int(v1), int(v2), int(v3), int(v4))
+        v5 = self.__getData()
+        return (int(v1), int(v2), int(v3), int(v4), int(v5))
 
     def close(self):
         self.__sendData('99')
