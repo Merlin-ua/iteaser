@@ -5,7 +5,7 @@ from multiprocessing import Process, Pipe
 
 def device(pipe):
     pygame.init()
-    surface = pygame.display.set_mode((400, 200))
+    surface = pygame.display.set_mode((500, 200))
     clock = pygame.time.Clock()
 
     frameColor = (255, 0, 0)
@@ -47,7 +47,7 @@ def device(pipe):
         receiving = True
 
       surface.fill(blackColor)
-      pygame.draw.rect(surface, frameColor, pygame.Rect(10, 60, 380, 80), 1)
+      pygame.draw.rect(surface, frameColor, pygame.Rect(10, 60, 480, 80), 1)
       pygame.draw.rect(surface, motorColor, pygame.Rect(20 + motor, 80, 40, 40))
       for i in range(len(hammers)):
           if hammers[i] == 0:
