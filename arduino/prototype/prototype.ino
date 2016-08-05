@@ -150,8 +150,10 @@ char readData() {
 }
 
 void updatePosition() {
-  int steps = (millis() - servo2start) / 1000;
-  if (steps % 7 == 5) {
+  unsigned long m = millis();
+  int steps = (m - servo2start) / 1000;
+  int steps2 = (m - servo2start) / 500;
+  if (steps2 % 13 == 5 || steps2 % 13 == 6) {
     if (servo2value == BUMP_NEUTRAL) {
       servo2value = BUMP_ENGAGED;
       servo2.write(servo2value);
@@ -163,7 +165,7 @@ void updatePosition() {
     }
   }
 
-  if (steps % 7 < 3) {
+  if (steps % 8 < 2) {
     if (servo3value == BUMP_NEUTRAL) {
       servo3value = BUMP_ENGAGED;
       servo3.write(servo3value);
@@ -175,7 +177,7 @@ void updatePosition() {
     }
   }
 
-  if (steps % 7 < 2) {
+  if (steps % 8 < 3) {
     if (servo4value == BUMP_NEUTRAL) {
       servo4value = BUMP_ENGAGED;
       servo4.write(servo4value);
@@ -187,7 +189,7 @@ void updatePosition() {
     }
   }
 
-  if (steps % 7 > 4) {
+  if (steps % 5 == 1) {
     if (servo5value == BUMP_NEUTRAL) {
       servo5value = BUMP_ENGAGED;
       servo5.write(servo5value);
