@@ -12,7 +12,7 @@ int servo1start = 0;
 int servo1dir = 0;
 
 Servo servo2;
-int servo2pin = 10;
+int servo2pin = 6;
 int servo2value = 0;
 int servo2start = 0;
 
